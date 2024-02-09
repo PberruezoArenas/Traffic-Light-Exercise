@@ -1,15 +1,13 @@
 import React, {useState} from "react";
 
 
-//include images into your bundle
-import rigoImage from "../../img/rigo-baby.jpg";
-
 //create your first component
-const Home = () => {
+const TrafficLight = () => {
 	const [colorRed, setRed] = useState("bg-danger opacity-50");
 	const [colorOrange, setOrange] = useState("bg-warning opacity-50");
 	const [colorGreen, setGreen] = useState("bg-success opacity-50");
 	const [activeLight, setActiveLight] = useState("red");
+
 
 	function changeRed() {
 		setRed("bg-danger redLight");
@@ -27,7 +25,6 @@ const Home = () => {
 		if (colorOrange === "bg-warning orangeLight"){
 			setOrange("bg-warning opacity-50");
 		}
-	
 	}
 
 	function changeGreen() {
@@ -39,8 +36,7 @@ const Home = () => {
 		}
 	}
 
-
-	function toggleAllColors() {
+	function switchColors() {
         switch (activeLight) {
             case "red":
                 changeRed();
@@ -59,7 +55,6 @@ const Home = () => {
         }
     }
 
-
 	function turnAllPurple() {
         if (activeLight === "purple") {
             setRed("bg-danger opacity-50");
@@ -74,13 +69,10 @@ const Home = () => {
         }
     }
 
-
-	
-
 	return (
 		<>
 		<div className="d-flex flex-column align-items-center position-absolute">
-                <button className="btn btn-success my-1" onClick={toggleAllColors}>
+                <button className="btn btn-success my-1" onClick={switchColors}>
                     Change Color
                 </button>
                 <button className="btn btn-info ml-2" onClick={turnAllPurple}>
@@ -97,4 +89,4 @@ const Home = () => {
 	);
 };
 
-export default Home;
+export default TrafficLight;
