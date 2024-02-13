@@ -36,24 +36,23 @@ const TrafficLight = () => {
 		}
 	}
 
+	
+	
 	function switchColors() {
-        switch (activeLight) {
-            case "red":
-                changeRed();
-                setActiveLight("orange");
-                break;
-            case "orange":
-                changeOrange();
-                setActiveLight("green");
-                break;
-            case "green":
-                changeGreen();
-                setActiveLight("red");
-                break;
-            default:
-                break;
-        }
-    }
+		setActiveLight(currentColor => {
+			const colorFunctions = {
+				'red': changeRed,
+				'orange': changeOrange,
+				'green': changeGreen,
+			};
+	
+			colorFunctions[currentColor]?.();
+	
+			return { 'red': 'orange', 'orange': 'green', 'green': 'red' }[currentColor];
+		});
+	}
+	
+	
 
 	function turnAllPurple() {
         if (activeLight === "purple") {
